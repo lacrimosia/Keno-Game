@@ -53,8 +53,8 @@ keno.game = function(up){
 		return this.total+=1;
 	};
 
-	this.erase = function(){
-		
+	this.reset = function(){
+		return this.up = 0;
 	};
 
 }
@@ -65,8 +65,7 @@ var game = new keno.game(0);
 $("#denom").text(game.up);
 $("#max").text(game.maxBet);
 $("#total").text(game.total);
-game.Values(game.kenoNum);
-// game.maxBet();
+
 
 
 $('#up').click(function(){
@@ -86,6 +85,12 @@ $('#max').click(function(){
 
 $("#clear").click(function(){
 	
+});
+
+$("#spin").click(function(){
+	// run chosen numbers
+	// subtract from total
+	$("#denom").text(game.reset());
 });
 
 
