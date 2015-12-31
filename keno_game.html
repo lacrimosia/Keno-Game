@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<meta charset="utf-8">
+<head>
+<title>Modern Keno 2.0</title>
+<link rel="stylesheet" href="keno_style.css"/>
+</head>
+<body>
+<div id="main">
+<h1>Modern Keno 2.0</h1>
+<div id="numbers">
+</div>
+
+<div id="jackpot"><span class="d">$</span><span id="dollars">0.00</span><h2>Jackpot</h2></div>
+<div id="left">
+<h2>Numbers Chosen:</h2>
+<div id="chosen"></div>
+<h2>Winning Numbers:</h2>
+<div id="winner"></div>
+<div id="payout">
+	<h2>Pays</h2>
+    One match = $10 <br>
+    Two = $100<br>
+    Three = $500<br>
+    Four = $1000<br>
+    Five = $5000<br>
+    Six = $10,000<br>
+    Seven = $$$$ Jackpot<br>
+</div>
+</div>
+
+<div id="nav">
+	<span id="denom"></span>
+	<input type="button" class="buttons" value="Up" id="up">
+	<span id="bet_text"></span>
+	<input type="button" class="buttons" value="down" id="down">
+	<input type="button" class="buttons" value="Max Bet" id="max">
+    <input type="button" class="buttons" value="Random" id="ranPick">
+	<input type="button" class="buttons" value="Erase" id="clear">
+	<input type="button" class="buttons" value="Play" id="spin">
+	<div id="total" class="buttons"></div>
+</div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="keno_game.js"></script>
+</body>
+</html>

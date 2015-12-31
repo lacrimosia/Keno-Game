@@ -1,0 +1,204 @@
+body{
+font-family: verdana, helvetica, sans-serif, serif, arial;
+margin: 0;
+padding: 0;
+background-color: #ffffff;
+}
+
+#main{
+	margin-top: -22px;
+}
+
+h1{
+font-size: 2.2em;
+color: #FF2E96; 
+font-family: verdana, helvetica, sans-serif, serif, arial;
+text-align: center;
+}
+
+h2{
+font-size: 1.5em;
+color: #9300F5; 
+font-family: verdana, helvetica, sans-serif, serif, arial;
+text-align: center;
+}
+
+#chosen, #winner{
+	border: 1px solid #000000;
+	width: 90%;
+	height: 30%;
+	max-height: 40%;
+	overflow:auto;
+	margin: 0 auto;
+	background-color: #000000;
+	color: #FF2E96;
+	padding: 3px;
+	text-align:center;
+}
+
+span{
+font-size: 1.5em;
+color: #FF2E96; 
+font-family: verdana, helvetica, sans-serif, serif, arial;
+}
+
+.chosenNum{
+background-color: #FF2E96;
+width: 25px;
+height: 25px;
+color: #ffffff;
+font-size: 1.2em;
+text-align: center;
+display: inline-block;
+padding: 5px;
+margin-top: 5px;
+margin-left: 5px;
+float: left;
+}
+
+#numbers{
+border: 1px solid #000000;
+font-size: 2em;
+width: 70%;
+height: 500px;
+text-align: center;
+float: right;
+margin-right: 1%;
+cursor: pointer;
+}
+
+#overlay{
+border: 3px solid red;
+background-color: red;
+font-size: 2em;
+width: 70%;
+height: 500px;
+text-align: center;
+float: right;
+margin-right: 1%;
+cursor: pointer;
+z-index: 5;
+}
+
+/*pink selected class*/
+.b2{
+background-color: #FF2E96;
+width: 45px;
+height: 45px;
+color: #ffffff;
+font-size: 1.1em;
+text-align: center;
+display: inline-block;
+padding: 5px;
+margin-top: 5px;
+margin-left: 5px;
+float: left;
+}
+
+/*Purple*/
+div[name="box"]{
+background-color: #9300F5;
+width: 45px;
+height: 45px;
+color: #ffffff;
+font-size: 1.1em;
+text-align: center;
+display: inline-block;
+padding: 5px;
+margin-top: 5px;
+margin-left: 5px;
+float: left;
+}
+
+.buttons {
+	-moz-box-shadow:inset 0px -1px 0px 0px #fbafe3;
+	-webkit-box-shadow:inset 0px -1px 0px 0px #fbafe3;
+	box-shadow:inset 0px -1px 0px 0px #fbafe3;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5bb0), color-stop(1, #ef027d) );
+	background:-moz-linear-gradient( center top, #ff5bb0 5%, #ef027d 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bb0', endColorstr='#ef027d');
+	background-color:#ff5bb0;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0;
+	border:1px solid #ee1eb5;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:40px;
+	line-height:40px;
+	width:100px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 0px 0px #c70067;
+}
+.buttons:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ef027d), color-stop(1, #ff5bb0) );
+	background:-moz-linear-gradient( center top, #ef027d 5%, #ff5bb0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef027d', endColorstr='#ff5bb0');
+	background-color:#ef027d;
+}.buttons:active {
+	position:relative;
+	top:1px;
+}
+
+#nav{
+float: right;
+width: 68%;
+height: 40px;
+background-color: #000000;
+margin-right: 1%;
+display: inline-block;
+padding: 10px;
+}
+
+#jackpot{
+width: 26%;
+height: 100px;
+border: 1px solid #000000;
+margin-right: 1%;
+display: inline-block;
+padding: 5px;
+margin-top: -101px;
+background-color:#000;
+text-align:center;
+}
+
+#dollars, .d{
+font-size: 1.8em;
+color: #FF2E96;
+font-weight:200; 
+font-family: verdana, helvetica, sans-serif, serif, arial;
+}
+
+#left{
+float: left;
+width: 26%;
+height: 100%;
+border: 1px solid #000000;
+margin-right: 1%;
+display: inline-block;
+padding: 5px;
+}
+
+.winningNum{
+background-color: #60F;
+color: #ffffff;
+}
+
+.hide{
+display:none;
+}
