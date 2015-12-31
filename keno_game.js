@@ -17,6 +17,7 @@ keno.game = function(up){
 	this.randomPicks = [];      //random picks will be stored here
 	this.win = [];              //winning keno numbers
 	this.count = 0;             //counts the number of times user picks a number
+	this.chosenBet = false;        // chosen bet
 
 	this.goUp = function(){
 	  	return this.up += 1;
@@ -39,8 +40,9 @@ keno.game = function(up){
   	  }
 	};
 
-	this.maxBet = function(maxBet){
-		this.maxBet = maxBet;
+	this.maxed = function(){
+		var newTotal = this.total - this.maxBet;
+		return newTotal;
 	};
 
 	this.upBet = function(){
@@ -49,6 +51,10 @@ keno.game = function(up){
 
 	this.downBet = function(){
 		return this.total+=1;
+	};
+
+	this.erase = function(){
+		
 	};
 
 }
@@ -60,28 +66,27 @@ $("#denom").text(game.up);
 $("#max").text(game.maxBet);
 $("#total").text(game.total);
 game.Values(game.kenoNum);
-game.maxBet();
+// game.maxBet();
 
 
 $('#up').click(function(){
-	game.goUp();
-	$("#denom").text(game.up);
-	$("#bet_text").text(game.up);
+	$("#denom").text(game.goUp());
 	$("#total").text(game.upBet());
 });
 
 $('#down').click(function(){
-	game.goDown();
-	$("#denom").text(game.up);
-	$("#bet_text").text(game.up);
+	$("#denom").text(game.goDown());
 	$("#total").text(game.downBet());
 });
 
 $('#max').click(function(){
-	game.maxBet();
-	$("#bet_text").text(game.maxBet);
+	$("#denom").text(game.maxBet);
+	$("#total").text(game.maxed());
 });
 
+$("#clear").click(function(){
+	
+});
 
 
 });
