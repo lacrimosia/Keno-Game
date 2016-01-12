@@ -18,6 +18,7 @@ keno.game = function(up){
 	this.win = [];              //winning keno numbers
 	this.count = 0;             //counts the number of times user picks a number
 	this.chosenBet = false;        // chosen bet
+	this.number = 0;
 
 	this.goUp = function(){
 	  	return this.up += 1;
@@ -58,8 +59,8 @@ keno.game = function(up){
 	};
 
 	this.addChosenNum = function(chosenNums){
-		this.newNum.push(chosenNums);
-		console.log("this num", this.newNum);
+		 this.newNum.push(chosenNums);
+ 		console.log("this num", numbers);
 		return this.newNum;
 	};
 
@@ -87,9 +88,16 @@ game.Values();
 
 $('.nums').click(function(){
 	var that = this;
-	game.addChosenNum(this.id);
-	$(that).toggleClass("chosenText");
-	$("#chosen").html(game.newNum+",  ");
+  game.number++;
+
+  if(game.number <=7){
+		game.addChosenNum(this.id);
+		$(that).toggleClass("chosenText");
+		$("#chosen").html(game.newNum+",  ");
+
+		console.log("number", game.number);
+	}
+
 	if(!$(that).hasClass("chosenText")){
 		game.removeChosenNum(this.id);
 	}
