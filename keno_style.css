@@ -56,6 +56,11 @@ margin-left: 5px;
 float: left;
 }
 
+.chosenText{
+	background: #000 !important;
+	transition: ease-in-out 0.3s;
+}
+
 #numbers{
 border: 1px solid #000000;
 font-size: 2em;

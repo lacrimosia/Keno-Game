@@ -27,15 +27,15 @@ keno.game = function(up){
 			return this.up -= 1;
 	};
 
-	this.Values = function(num1){
+	this.Values = function(){
 		//keno numbers pushed dynamically into array
 	for (var m=0; m<81; m++){
-		num1.push(m);     //this loop pushes the 80 numbers inside the array
-	for(j=m; this.j<num1.length; j++){
+		this.kenoNum.push(m);     //this loop pushes the 80 numbers inside the array
+	for(j=m; j<this.kenoNum.length; j++){
 	     //this loop takes those numbers and inserts them into html divs for display
-	     console.log("j", j);
-		$('#numbers').append('<div class="' + num1[j] + '" id="' + num1[j] + '" name="box">' + num1[j] +'</div>');			
-		var value = $('#'+num1[j]).html();
+	    // console.log("j", j);
+		$('#numbers').append('<div class="nums ' + this.kenoNum[j] + '" id="' + this.kenoNum[j] + '" name="box">' + this.kenoNum[j] +'</div>');
+		var value = $('#'+this.kenoNum[j]).html();
 		}
   	  }
 	};
@@ -57,6 +57,22 @@ keno.game = function(up){
 		return this.up = 0;
 	};
 
+	this.addChosenNum = function(chosenNums){
+		this.newNum.push(chosenNums);
+		console.log("this num", this.newNum);
+	};
+
+	this.removeChosenNum = function(chosenNums){
+	for(var x=0; x<this.newNum.length; x++){
+		var getNums = this.newNum.indexOf(x);
+		if(this.newNum[x] === chosenNums) {
+						getNums.splice(x, 1);
+						console.log("getNUms", getNums);
+				}
+			return getNums;
+	 }
+	};
+
 }
 
 var game = new keno.game(0);
@@ -66,7 +82,16 @@ $("#denom").text(game.up);
 $("#max").text(game.maxBet);
 $("#total").text(game.total);
 
+game.Values();
 
+$('.nums').click(function(){
+	var that = this;
+	game.addChosenNum(this.id);
+	$(that).toggleClass("chosenText");
+	if(!$(that).hasClass("chosenText")){
+		game.removeChosenNum(this.id);
+	}
+});
 
 $('#up').click(function(){
 	$("#denom").text(game.goUp());
@@ -84,8 +109,10 @@ $('#max').click(function(){
 });
 
 $("#clear").click(function(){
-	
+
 });
+
+$("#chosen").text(this.newNum);
 
 $("#spin").click(function(){
 	// run chosen numbers
