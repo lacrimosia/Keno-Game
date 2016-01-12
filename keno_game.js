@@ -60,6 +60,7 @@ keno.game = function(up){
 	this.addChosenNum = function(chosenNums){
 		this.newNum.push(chosenNums);
 		console.log("this num", this.newNum);
+		return this.newNum;
 	};
 
 	this.removeChosenNum = function(chosenNums){
@@ -88,10 +89,12 @@ $('.nums').click(function(){
 	var that = this;
 	game.addChosenNum(this.id);
 	$(that).toggleClass("chosenText");
+	$("#chosen").html(game.newNum+",  ");
 	if(!$(that).hasClass("chosenText")){
 		game.removeChosenNum(this.id);
 	}
 });
+
 
 $('#up').click(function(){
 	$("#denom").text(game.goUp());
@@ -111,8 +114,6 @@ $('#max').click(function(){
 $("#clear").click(function(){
 
 });
-
-$("#chosen").text(this.newNum);
 
 $("#spin").click(function(){
 	// run chosen numbers
