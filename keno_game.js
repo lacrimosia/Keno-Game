@@ -58,10 +58,13 @@ keno.game = function(up){
 		return this.up = 0;
 	};
 
-	this.addChosenNum = function(chosenNums){
-		 this.newNum.push(chosenNums);
- 		console.log("this num", numbers);
-		return this.newNum;
+	this.addChosenNum = function(chosenNums, count){
+		if(count <= 7){
+			this.newNum.push(chosenNums);
+  	//	console.log("counting value", count);
+		//	console.log("value of a array", this.newNum.length);
+ 		return this.newNum;
+		}
 	};
 
 	this.removeChosenNum = function(chosenNums){
@@ -91,7 +94,7 @@ $('.nums').click(function(){
   game.number++;
 
   if(game.number <=7){
-		game.addChosenNum(this.id);
+		game.addChosenNum(this.id, game.number);
 		$(that).toggleClass("chosenText");
 		$("#chosen").html(game.newNum+",  ");
 
