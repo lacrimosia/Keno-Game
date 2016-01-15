@@ -19,6 +19,14 @@ keno.game = function(up){
 	this.count = 0;             //counts the number of times user picks a number
 	this.chosenBet = false;        // chosen bet
 	this.number = 0;
+	this.oneMatch = 3;        // these are the values that determine the pays.
+	this.twoMatch = 5;
+	this.threeMatch = 10;
+	this.fourMatch = 25;
+	this.fiveMatch = 250;
+	this.sixMatch = 2500;
+	this.jackpot = 75000;
+	this.sevenMatch = this.jackpot;
 
 	this.goUp = function(){
 	  	return this.up += 1;
@@ -67,6 +75,29 @@ keno.game = function(up){
 		}
 	};
 
+	this.pays = function(numAmount){
+	  var gameNum = this.up;
+		var one_match = gameNum*(this.oneMatch*numAmount);
+		var two_match = gameNum*(this.twoMatch*numAmount);
+		var three_match = gameNum*(this.threeMatch*numAmount);
+		var four_match = gameNum*(this.fourMatch*numAmount);
+		var five_match = gameNum*(this.fiveMatch*numAmount);
+		var six_match = gameNum*(this.sixMatch*numAmount);
+		var seven_match = gameNum*(this.sevenMatch*numAmount);
+     console.log("this.up", gameNum);
+    var payAmount = [one_match, two_match, three_match, four_match, five_match, six_match, seven_match];
+
+		$("#one").html("$"+payAmount[0]);
+		$("#two").html("$"+payAmount[1]);
+		$("#three").html("$"+payAmount[2]);
+		$("#four").html("$"+payAmount[3]);
+		$("#five").html("$"+payAmount[4]);
+		$("#six").html("$"+payAmount[5]);
+		$("#seven").html("$"+payAmount[6]);
+
+		console.log("pay Amount", payAmount[0]);
+	};
+
 	this.removeChosenNum = function(chosenNums){
 	for(var x=0; x<this.newNum.length; x++){
 		var getNums = this.newNum.indexOf(x);
@@ -80,7 +111,7 @@ keno.game = function(up){
 
 }
 
-var game = new keno.game(0);
+var game = new keno.game(1);
 
 // init
 $("#denom").text(game.up);
@@ -91,13 +122,15 @@ game.Values();
 
 $('.nums').click(function(){
 	var that = this;
-  game.number++;
+	game.number++;
 
-  if(game.number <=7){
+	if(game.number <=7){
+		// dynamic pay changes
+		game.pays(game.number);
+
 		game.addChosenNum(this.id, game.number);
 		$(that).toggleClass("chosenText");
 		$("#chosen").html(game.newNum+",  ");
-
 		console.log("number", game.number);
 	}
 
@@ -131,6 +164,5 @@ $("#spin").click(function(){
 	// subtract from total
 	$("#denom").text(game.reset());
 });
-
 
 });
