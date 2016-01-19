@@ -9,6 +9,7 @@ var keno = keno || {};
 
 keno.game = function(up){
 	this.up = up;                //$1 bet
+	this.numMax = 80;           // maximum numbers
 	this.maxBet = 30;           //max bet of $30
 	this.total = 1000;          //total amount of casino cash
 	this.kenoNum = [];          //array of all keno numbers
@@ -77,6 +78,7 @@ keno.game = function(up){
 
 	this.pays = function(numAmount){
 	  var gameNum = this.up;
+		console.log('game Num', this.up);
 		var one_match = gameNum*(this.oneMatch*numAmount);
 		var two_match = gameNum*(this.twoMatch*numAmount);
 		var three_match = gameNum*(this.threeMatch*numAmount);
@@ -84,7 +86,6 @@ keno.game = function(up){
 		var five_match = gameNum*(this.fiveMatch*numAmount);
 		var six_match = gameNum*(this.sixMatch*numAmount);
 		var seven_match = gameNum*(this.sevenMatch*numAmount);
-     console.log("this.up", gameNum);
     var payAmount = [one_match, two_match, three_match, four_match, five_match, six_match, seven_match];
 
 		$("#one").html("$"+payAmount[0]);
@@ -95,7 +96,7 @@ keno.game = function(up){
 		$("#six").html("$"+payAmount[5]);
 		$("#seven").html("$"+payAmount[6]);
 
-		console.log("pay Amount", payAmount[0]);
+	//	console.log("pay Amount", payAmount[0]);
 	};
 
 	this.removeChosenNum = function(chosenNums){
@@ -109,6 +110,17 @@ keno.game = function(up){
 	 }
 	};
 
+	this.winningNumbers = function(){
+		var winners = 1;
+		var rands = Math.floor((Math.random() * this.numMax) + 1);
+		while(winners < 8){
+			this.win.push(rands);
+			winners++;
+	//	console.log(this.win);
+			return this.win.join(', ');
+		}
+	};
+
 }
 
 var game = new keno.game(1);
@@ -120,6 +132,8 @@ $("#total").text(game.total);
 
 game.Values();
 
+
+
 $('.nums').click(function(){
 	var that = this;
 	game.number++;
@@ -127,7 +141,6 @@ $('.nums').click(function(){
 	if(game.number <=7){
 		// dynamic pay changes
 		game.pays(game.number);
-
 		game.addChosenNum(this.id, game.number);
 		$(that).toggleClass("chosenText");
 		$("#chosen").html(game.newNum+",  ");
@@ -139,6 +152,8 @@ $('.nums').click(function(){
 	}
 });
 
+// winning numbers
+$("#winner").html(game.winningNumbers());
 
 $('#up').click(function(){
 	$("#denom").text(game.goUp());
