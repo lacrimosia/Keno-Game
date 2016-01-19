@@ -20,21 +20,25 @@ keno.game = function(up){
 	this.count = 0;             //counts the number of times user picks a number
 	this.chosenBet = false;        // chosen bet
 	this.number = 0;
-	this.oneMatch = 3;        // these are the values that determine the pays.
-	this.twoMatch = 5;
-	this.threeMatch = 10;
-	this.fourMatch = 25;
+	this.oneMatch = 1;        // these are the values that determine the pays.
+	this.twoMatch = 3;
+	this.threeMatch = 5;
+	this.fourMatch = 15;
 	this.fiveMatch = 250;
-	this.sixMatch = 2500;
-	this.jackpot = 75000;
+	this.sixMatch = 500;
+	this.jackpot = 12000;
 	this.sevenMatch = this.jackpot;
 
 	this.goUp = function(){
+		if(this.up >= 0 && this.up < 30){
 	  	return this.up += 1;
+		}
 	};
 
 	this.goDown = function(){
+		if(this.up > 0){
 			return this.up -= 1;
+		}
 	};
 
 	this.Values = function(){
