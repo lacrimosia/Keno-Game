@@ -111,13 +111,18 @@ keno.game = function(up){
 	};
 
 	this.winningNumbers = function(){
-		var winners = 1;
+		var winners = 0;
+		for(winners; winners<8; winners++){
 		var rands = Math.floor((Math.random() * this.numMax) + 1);
-		while(winners < 8){
-			this.win.push(rands);
-			winners++;
-	//	console.log(this.win);
-			return this.win.join(', ');
+		this.win[0] = Math.floor((Math.random() * this.numMax) + 1);
+		this.win[1] = Math.floor((Math.random() * this.numMax) + 1);
+		this.win[2] = Math.floor((Math.random() * this.numMax) + 1);
+	  this.win[3] = Math.floor((Math.random() * this.numMax) + 1);
+		this.win[4] = Math.floor((Math.random() * this.numMax) + 1);
+		this.win[5] = Math.floor((Math.random() * this.numMax) + 1);
+		this.win[6] = Math.floor((Math.random() * this.numMax) + 1);
+	  // console.log(this.win);
+			return this.win.join(", ");
 		}
 	};
 
@@ -143,7 +148,7 @@ $('.nums').click(function(){
 		game.pays(game.number);
 		game.addChosenNum(this.id, game.number);
 		$(that).toggleClass("chosenText");
-		$("#chosen").html(game.newNum+",  ");
+		$("#chosen").html(game.newNum.join(", "));
 		console.log("number", game.number);
 	}
 
