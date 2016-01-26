@@ -22,12 +22,6 @@ keno.game = function(up) {
   this.count = 0;        //counts the number of times user picks a number
   this.chosenBet = false; // chosen bet
   this.number = 0;
-  this.oneMatch = 1;     // these are the values that determine the pays.
-  this.twoMatch = 3;     // These the pays for each match.
-  this.threeMatch = 5;
-  this.fourMatch = 15;
-  this.fiveMatch = 250;
-  this.sixMatch = 500;
   this.jackpot = 12000;
   this.sevenMatch = this.jackpot; // jackpot amount
 }
@@ -95,25 +89,19 @@ keno.game.prototype.addChosenNum = function(chosenNums, count) {
 // Output the pay amounts
 keno.game.prototype.pays = function(numAmount) {
   var gameNum = this.up;
-  console.log('game Num', this.up);
-  var one_match = gameNum * (this.oneMatch * numAmount);
-  var two_match = gameNum * (this.twoMatch * numAmount);
-  var three_match = gameNum * (this.threeMatch * numAmount);
-  var four_match = gameNum * (this.fourMatch * numAmount);
-  var five_match = gameNum * (this.fiveMatch * numAmount);
-  var six_match = gameNum * (this.sixMatch * numAmount);
-  var seven_match = gameNum * (this.sevenMatch * numAmount);
-  var payAmount = [one_match, two_match, three_match, four_match, five_match, six_match, seven_match];
+  var pays = 1.00;
+  var payAmounts = [];
+  for(var x=0; x<8; x++){
+  //  $("#p"+x).html("$" + matches);
 
-  $("#one").html("$" + payAmount[0]);
-  $("#two").html("$" + payAmount[1]);
-  $("#three").html("$" + payAmount[2]);
-  $("#four").html("$" + payAmount[3]);
-  $("#five").html("$" + payAmount[4]);
-  $("#six").html("$" + payAmount[5]);
-  $("#seven").html("$" + payAmount[6]);
-
-  //	console.log("pay Amount", payAmount[0]);
+   if(numAmount == x){
+     var nums = numAmount *= 5;
+     var matches = gameNum * (pays * nums);
+     payAmounts.push(matches*x);
+   }
+  }
+  console.log('pay Amounts', payAmounts);
+  return payAmounts;
 };
 
 // Remove Chosen numbers from array
@@ -130,18 +118,10 @@ keno.game.prototype.removeChosenNum = function(chosenNums) {
 
 // get the winning numbers to compare to user numbers
 keno.game.prototype.winningNumbers = function() {
-  var winners = 0;
-  for (winners; winners < 8; winners+8) {
-   var rands = Math.floor((Math.random() * this.numMax) + winners);
-    this.win[0] = Math.floor((Math.random() * this.numMax) + winners);
-    this.win[1] = Math.floor((Math.random() * this.numMax) + winners);
-    this.win[2] = Math.floor((Math.random() * this.numMax) + winners);
-    this.win[3] = Math.floor((Math.random() * this.numMax) + winners);
-    this.win[4] = Math.floor((Math.random() * this.numMax) + winners);
-    this.win[5] = Math.floor((Math.random() * this.numMax) + winners);
-    this.win[6] = Math.floor((Math.random() * this.numMax) + winners);
-    // console.log(this.win);
-    return this.win.join(", ");
+  for (var i = 0; i < 8; i++) {
+       this.win.push(Math.floor((Math.random() * this.numMax) + i));
   }
-
+  // return entire array with random values for winning numbers
+  console.log(this.win);
+  return this.win.join(", ");
 };

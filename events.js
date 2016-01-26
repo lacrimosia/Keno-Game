@@ -24,7 +24,7 @@ $('.nums').click(function(){
 		game.addChosenNum(this.id, game.number);
 		$(that).toggleClass("chosenText");
 		$("#chosen").html(game.newNum.join(", "));
-		console.log("number", game.number);
+		// console.log("number", game.number);
 	}
 
 	if(!$(that).hasClass("chosenText")){
@@ -53,7 +53,7 @@ $("#clear").click(function(){
 
 $("#spin").click(function(){
   // winning numbers
-   $("#winner").html(game.winningNumbers());
+   $("#winner").append(game.winningNumbers());
 });
 
 });
