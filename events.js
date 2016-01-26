@@ -32,9 +32,6 @@ $('.nums').click(function(){
 	}
 });
 
-// winning numbers
-$("#winner").html(game.winningNumbers());
-
 $('#up').click(function(){
 	$("#denom").text(game.goUp());
 	$("#total").text(game.upBet());
@@ -55,10 +52,8 @@ $("#clear").click(function(){
 });
 
 $("#spin").click(function(){
-	// run chosen numbers
-	// subtract from total
-	game.testing();
-//	$("#denom").text(game.reset());
+  // winning numbers
+   $("#winner").html(game.winningNumbers());
 });
 
 });

@@ -131,16 +131,17 @@ keno.game.prototype.removeChosenNum = function(chosenNums) {
 // get the winning numbers to compare to user numbers
 keno.game.prototype.winningNumbers = function() {
   var winners = 0;
-  for (winners; winners < 8; winners++) {
-    var rands = Math.floor((Math.random() * this.numMax) + 1);
-    this.win[0] = Math.floor((Math.random() * this.numMax) + 1);
-    this.win[1] = Math.floor((Math.random() * this.numMax) + 1);
-    this.win[2] = Math.floor((Math.random() * this.numMax) + 1);
-    this.win[3] = Math.floor((Math.random() * this.numMax) + 1);
-    this.win[4] = Math.floor((Math.random() * this.numMax) + 1);
-    this.win[5] = Math.floor((Math.random() * this.numMax) + 1);
-    this.win[6] = Math.floor((Math.random() * this.numMax) + 1);
+  for (winners; winners < 8; winners+8) {
+   var rands = Math.floor((Math.random() * this.numMax) + winners);
+    this.win[0] = Math.floor((Math.random() * this.numMax) + winners);
+    this.win[1] = Math.floor((Math.random() * this.numMax) + winners);
+    this.win[2] = Math.floor((Math.random() * this.numMax) + winners);
+    this.win[3] = Math.floor((Math.random() * this.numMax) + winners);
+    this.win[4] = Math.floor((Math.random() * this.numMax) + winners);
+    this.win[5] = Math.floor((Math.random() * this.numMax) + winners);
+    this.win[6] = Math.floor((Math.random() * this.numMax) + winners);
     // console.log(this.win);
     return this.win.join(", ");
   }
+
 };
